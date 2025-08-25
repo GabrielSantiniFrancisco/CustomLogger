@@ -1,8 +1,8 @@
-# Skynet Logger 
+# Custom Logger 
 
 **The Extraterrestrial Overlord of Logging Frameworks**
 
-Welcome to **Skynet Logger**, the custom logger that beams down from the cosmos to bring structured and configurable logging to your codebase. Forget the days of primitive, unstructured logs—Skynet Logger is here to abduct your logging problems and replace them with beautifully formatted, context-rich logs that are light-years ahead.
+Welcome to **Custom Logger**, the custom logger that beams down from the cosmos to bring structured and configurable logging to your codebase. Forget the days of primitive, unstructured logs—Custom Logger is here to abduct your logging problems and replace them with beautifully formatted, context-rich logs that are light-years ahead.
 
 ---
 
@@ -18,13 +18,13 @@ Welcome to **Skynet Logger**, the custom logger that beams down from the cosmos 
 ## 🛠️ Installation
 Clone the repo and drop `CustomLogger.py` into your project like an alien artifact discovered in Area 51:  
 ```bash
-git clone https://github.com/yourusername/SkynetLogger.git
+git clone https://github.com/yourusername/CustomLogger.git
 ```
 
 ---
 
 ## 👽 Usage
-Here’s how to summon the extraterrestrial power of Skynet Logger:
+Here’s how to summon the extraterrestrial power of Custom Logger:
 
 ```python
 from CustomLogger import CustomLogger
@@ -34,7 +34,7 @@ config = {
     "enabled": True,
     "level": "DEBUG",
     "log_to_file": True,
-    "log_file_path": "./skynet_logger.log",
+    "log_file_path": "./Custom_logger.log",
     "log_to_console": True,
     "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
     "date_format": "%Y-%m-%d %H:%M:%S"
@@ -45,7 +45,7 @@ logger = CustomLogger(config, logger_name="alien_app")
 
 # Log messages with cosmic style
 logger.debug("Debugging the alien tech", action="reverse engineering", success=True)
-logger.info("Skynet Logger has landed!")
+logger.info("Custom Logger has landed!")
 logger.warning("Warning: Unidentified log format detected!", location="Sector 7G")
 logger.error("Error: Wormhole instability detected!", severity="high")
 logger.critical("Critical: Black hole imminent!", evacuation="underway")
@@ -66,8 +66,8 @@ logger.critical("Critical: Black hole imminent!", evacuation="underway")
 
 ---
 
-## 🛸 Why Skynet Logger?
-Because your logs deserve to be more than just boring text files. With Skynet Logger, you get:  
+## 🛸 Why Custom Logger?
+Because your logs deserve to be more than just boring text files. With Custom Logger, you get:  
 - Logs that are **structured** and **readable**.  
 - Contextual information that makes debugging feel like deciphering alien hieroglyphs.  
 - A logger that’s as adaptable as an extraterrestrial shapeshifter.  
@@ -75,7 +75,7 @@ Because your logs deserve to be more than just boring text files. With Skynet Lo
 ---
 
 ## 🌌 Contributing
-Want to add more alien-themed features? Open a PR and let’s make Skynet Logger even more otherworldly!  
+Want to add more alien-themed features? Open a PR and let’s make Custom Logger even more otherworldly!  
 
 ---
 
@@ -85,4 +85,4 @@ This project is licensed under the MIT License. Because even aliens believe in o
 ---
 
 ## 👽 Fun Fact
-Did you know? The Wow! signal detected in 1977 was a strong narrowband radio signal from space. That’s almost as powerful as Skynet Logger’s ability to decode your logging woes.
+Did you know? The Wow! signal detected in 1977 was a strong narrowband radio signal from space. That’s almost as powerful as Custom Logger’s ability to decode your logging woes.
