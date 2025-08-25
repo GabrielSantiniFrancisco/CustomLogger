@@ -7,10 +7,6 @@
 # and provides methods for logging messages at various severity levels with contextual information.
 # The logger is intended for use in applications requiring flexible and detailed logging capabilities.
 
-##########################
-# INITIAL SETUP
-##########################
-
 import logging, sys, inspect
 
 class CustomLogger:
@@ -60,26 +56,24 @@ class CustomLogger:
             console_handler.setFormatter(formatter)
             self.logger.addHandler(console_handler)
     
-    def debug(self, message: str, **kwargs):
-        self.logger.debug(self._format_message(message, **kwargs))
-    
-    def info(self, message: str, **kwargs):
-        self.logger.info(self._format_message(message, **kwargs))
-    
-    def warning(self, message: str, **kwargs):
-        self.logger.warning(self._format_message(message, **kwargs))
-    
-    def error(self, message: str, **kwargs):
-        self.logger.error(self._format_message(message, **kwargs))
-    
-    def critical(self, message: str, **kwargs):
-        self.logger.critical(self._format_message(message, **kwargs))
-    
+    def debug(self, message: str, **kwargs):    self.logger.debug(self._format_message(message, **kwargs))
+    def info(self, message: str, **kwargs):     self.logger.info(self._format_message(message, **kwargs))
+    def warning(self, message: str, **kwargs):  self.logger.warning(self._format_message(message, **kwargs))
+    def error(self, message: str, **kwargs):    self.logger.error(self._format_message(message, **kwargs))
+    def critical(self, message: str, **kwargs): self.logger.critical(self._format_message(message, **kwargs))
+
     def _format_message(self, message: str, **kwargs) -> str:
-        """Format the message with additional context and function name."""
-        function_name = inspect.stack()[2][3]
-        if function_name == "<module>": function_name = "MAIN"
+        """Format the message with additional context, module, and function name."""
+        stack = inspect.stack()
+
+        module = inspect.getmodule(stack[2][0])
+        module_name = module.__name__.split('.')[-1] if module else "UNKNOWN"
+        function_name = stack[2][3]
+        if function_name == "<module>":
+            function_name = "MAIN"
+
+        module_name = module_name.split('/')[-1].replace('.py', '').capitalize()
         if kwargs:
             context = " | ".join([f"{k}={v}" for k, v in kwargs.items()])
-            return f"[{function_name}] - {message} | {context}"
-        return f"[{function_name}] - {message}"
+            return f"[{module_name}:{function_name}] - {message} | {context}"
+        return f"[{module_name}:{function_name}] - {message}"
