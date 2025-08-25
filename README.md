@@ -18,7 +18,7 @@ Welcome to **Skynet Logger**, the custom logger that beams down from the cosmos 
 ## 🛠️ Installation
 Clone the repo and drop `CustomLogger.py` into your project like an alien artifact discovered in Area 51:  
 ```bash
-git clone https://github.com/yourusername/skynet-logger.git
+git clone https://github.com/yourusername/SkynetLogger.git
 ```
 
 ---
