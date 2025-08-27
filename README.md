@@ -1,88 +1,79 @@
-# Custom Logger 
+# CustomLogger
 
-**The Extraterrestrial Overlord of Logging Frameworks**
+A professional, flexible, and structured logging utility for Python applications. This module provides a configurable logger that supports both file and console output, dynamic log levels, and contextual message formatting. Designed for use in production-grade systems where detailed, readable, and easily managed logs are essential.
 
-Welcome to **Custom Logger**, the custom logger that beams down from the cosmos to bring structured and configurable logging to your codebase. Forget the days of primitive, unstructured logs—Custom Logger is here to abduct your logging problems and replace them with beautifully formatted, context-rich logs that are light-years ahead.
+## Features
 
----
+- **Configurable Logging**: Set log level, output format, date format, and enable/disable file or console logging via a configuration dictionary.
+- **Dual Output**: Log messages to both file and console, or either, as needed.
+- **Structured Context**: Each log message includes the module and function name, with optional contextual key-value pairs.
+- **Dynamic Setup**: Easily integrate with any application by passing a config dict; no hardcoded paths or settings.
+- **Error Handling**: Gracefully handles file handler setup errors, falling back to console logging if needed.
+- **Simple API**: Standard logging methods (`debug`, `info`, `warning`, `error`, `critical`) with enhanced formatting.
 
-## 🛸 Features
-- **Dynamic Configuration**: Adjust log levels, formats, and destinations faster than a UFO entering hyperspace.  
-- **Dual Output**: Logs to both console and file because why settle for one planet when you can conquer the galaxy?  
-- **Contextual Logging**: Automatically includes the function name and optional context because context is universal.  
-- **Error Handling**: Gracefully handles file logging issues without causing an interstellar catastrophe.  
-- **Customizable Formats**: Choose your log format and date format like you're programming an alien mothership.
+## Usage
 
----
+### 1. Installation
+Copy `CustomLogger.py` into your project (e.g., in a `lib/` or `utils/` directory).
 
-## 🛠️ Installation
-Clone the repo and drop `CustomLogger.py` into your project like an alien artifact discovered in Area 51:  
-```bash
-git clone https://github.com/yourusername/CustomLogger.git
+### 2. Example Configuration
+```python
+config = {
+    'enabled': True,
+    'level': 'INFO',
+    'log_to_file': True,
+    'log_file_path': './my_app.log',
+    'log_to_console': True,
+    'format': '%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    'date_format': '%Y-%m-%d %H:%M:%S',
+}
 ```
 
----
-
-## 👽 Usage
-Here’s how to summon the extraterrestrial power of Custom Logger:
-
+### 3. Basic Usage
 ```python
 from CustomLogger import CustomLogger
 
-# Configuration for the logger
-config = {
-    "enabled": True,
-    "level": "DEBUG",
-    "log_to_file": True,
-    "log_file_path": "./Custom_logger.log",
-    "log_to_console": True,
-    "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-    "date_format": "%Y-%m-%d %H:%M:%S"
-}
+logger = CustomLogger(config, logger_name="my_app")
 
-# Initialize the logger
-logger = CustomLogger(config, logger_name="alien_app")
-
-# Log messages with cosmic style
-logger.debug("Debugging the alien tech", action="reverse engineering", success=True)
-logger.info("Custom Logger has landed!")
-logger.warning("Warning: Unidentified log format detected!", location="Sector 7G")
-logger.error("Error: Wormhole instability detected!", severity="high")
-logger.critical("Critical: Black hole imminent!", evacuation="underway")
+logger.info("Application started")
+logger.debug("Debugging details", user="alice", action="login")
+logger.error("An error occurred", error_code=500)
 ```
 
+### 4. Output Example
+```
+2025-08-27 12:00:00 - my_app - INFO - [Customlogger:main] - Application started
+2025-08-27 12:00:01 - my_app - DEBUG - [Customlogger:some_function] - Debugging details | user=alice | action=login
+2025-08-27 12:00:02 - my_app - ERROR - [Customlogger:some_function] - An error occurred | error_code=500
+```
+
+## API Reference
+
+### `CustomLogger(config: dict, logger_name: str = "get_token")`
+- **config**: Dictionary with logging options (see above).
+- **logger_name**: Name for the logger instance (default: `get_token`).
+
+#### Methods
+- `debug(message: str, **kwargs)`
+- `info(message: str, **kwargs)`
+- `warning(message: str, **kwargs)`
+- `error(message: str, **kwargs)`
+- `critical(message: str, **kwargs)`
+
+All methods accept a message and any number of keyword arguments for additional context.
+
+## Advanced Details
+- **Contextual Logging**: Each log entry includes the module and function name where the log was called, making it easy to trace issues.
+- **No Duplicate Handlers**: Automatically clears existing handlers to prevent duplicate log entries.
+- **Graceful Degradation**: If file logging fails (e.g., due to permissions), logs a warning and continues with console logging.
+
+## License
+MIT License
+
+## Author
+Gabriel Santini Francisco  
+Email: gabrielsantinifrancisco@outlook.com
+
 ---
 
-## 🧩 Configuration Options
-| Option            | Description                                                                 | Default Value               |
-|--------------------|-----------------------------------------------------------------------------|-----------------------------|
-| `enabled`         | Enable or disable logging.                                                 | `True`                      |
-| `level`           | Set the logging level (`DEBUG`, `INFO`, `WARNING`, `ERROR`, `CRITICAL`).   | `INFO`                      |
-| `log_to_file`     | Enable or disable logging to a file.                                       | `True`                      |
-| `log_file_path`   | Path to the log file.                                                      | `./token_manager.log`       |
-| `log_to_console`  | Enable or disable logging to the console.                                  | `True`                      |
-| `format`          | Log message format.                                                       | `'%(asctime)s - %(name)s - %(levelname)s - %(message)s'` |
-| `date_format`     | Date format for log timestamps.                                            | `'%Y-%m-%d %H:%M:%S'`       |
-
----
-
-## 🛸 Why Custom Logger?
-Because your logs deserve to be more than just boring text files. With Custom Logger, you get:  
-- Logs that are **structured** and **readable**.  
-- Contextual information that makes debugging feel like deciphering alien hieroglyphs.  
-- A logger that’s as adaptable as an extraterrestrial shapeshifter.  
-
----
-
-## 🌌 Contributing
-Want to add more alien-themed features? Open a PR and let’s make Custom Logger even more otherworldly!  
-
----
-
-## 📜 License
-This project is licensed under the MIT License. Because even aliens believe in open source.
-
----
-
-## 👽 Fun Fact
-Did you know? The Wow! signal detected in 1977 was a strong narrowband radio signal from space. That’s almost as powerful as Custom Logger’s ability to decode your logging woes.
+*For questions, suggestions, or contributions, please open an issue or pull request on the repository.*
